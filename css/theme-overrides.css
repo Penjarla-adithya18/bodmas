@@ -1,0 +1,61 @@
+/* Shared light-mode overrides for Tailwind-rendered pages. */
+
+body[data-theme="light"] {
+    background: #eef3ff !important;
+    color: #111827 !important;
+}
+
+body[data-theme="light"] .bg-background {
+    background-color: #eef3ff !important;
+}
+
+body[data-theme="light"] .bg-surface {
+    background-color: #ffffff !important;
+}
+
+body[data-theme="light"] .glass-panel {
+    background: rgba(255, 255, 255, 0.82) !important;
+    border-color: rgba(148, 163, 184, 0.35) !important;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+body[data-theme="light"] [class*="text-on-surface"] {
+    color: #111827 !important;
+}
+
+body[data-theme="light"] [class*="text-on-surface-variant"] {
+    color: #475569 !important;
+}
+
+body[data-theme="light"] [class*="border-outline-variant"] {
+    border-color: rgba(148, 163, 184, 0.45) !important;
+}
+
+body[data-theme="light"] [class*="bg-surface-container-lowest"] {
+    background-color: #f8fafc !important;
+}
+
+body[data-theme="light"] [class*="bg-surface-container-high"] {
+    background-color: rgba(241, 245, 249, 0.82) !important;
+}
+
+body[data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.84) !important;
+    border-bottom-color: rgba(148, 163, 184, 0.4) !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
+}
+
+body[data-theme="light"] footer {
+    background: rgba(255, 255, 255, 0.86) !important;
+    border-top-color: rgba(148, 163, 184, 0.36) !important;
+}
+
+body[data-theme="light"] .theme-toggle {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-color: rgba(148, 163, 184, 0.5) !important;
+    color: #0ea5e9 !important;
+}
+
+body[data-theme="light"] [class*="shadow-[0_0_60px"] {
+    box-shadow: 0 0 48px rgba(14, 165, 233, 0.2) !important;
+}

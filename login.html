@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-overrides.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -69,8 +70,6 @@
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-x-hidden">
-    <button type="button" class="theme-toggle fixed top-5 right-5 z-30 rounded-full border border-outline-variant/40 bg-surface-container-high/70 px-3 py-2 text-xs tracking-wider uppercase text-on-surface-variant hover:text-secondary hover:border-secondary/50 transition" aria-label="Toggle theme" title="Toggle theme"><span class="theme-icon">◐</span></button>
-
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[150px] rounded-full"></div>

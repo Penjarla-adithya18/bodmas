@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-overrides.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -69,9 +70,6 @@
         <div class="flex items-center gap-3">
             <button onclick="window.location.href='login.html'" class="rounded-full border border-secondary px-5 py-2 text-xs font-headline font-bold uppercase tracking-widest text-secondary transition-all hover:bg-secondary/10">Login</button>
             <button onclick="window.location.href='register.html'" class="rounded-full bg-gradient-to-r from-primary to-primary-dim px-5 py-2 text-xs font-headline font-bold uppercase tracking-widest text-[#3c0058] transition-all hover:scale-105">Get Started</button>
-            <button type="button" class="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-outline-variant/50 bg-surface/70 text-secondary transition-all hover:border-secondary/70" aria-label="Toggle theme" title="Toggle theme">
-                <span class="theme-icon">◐</span>
-            </button>
         </div>
     </header>
 

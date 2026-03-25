@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODMAS Master - Select Level</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/levels.css">
+</head>
+<body class="level-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><span class="logo-text">BODMAS Master</span></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="level-select.html" class="nav-link active">Levels</a></li>
+                <li><a href="leaderboard.html" class="nav-link">Rankings</a></li>
+            </ul>
+            <div class="nav-auth-actions">
+                <button class="btn btn-secondary nav-auth-btn" onclick="window.location.href='dashboard.html'">Dashboard</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="levels-container">
+        <section class="levels-header">
+            <p class="hero-subtitle">PROGRESSION TRACK</p>
+            <h1 class="hero-title">Choose Your <span class="highlight-cyan">Mission Node</span></h1>
+            <p class="hero-description">Roadmap-style progression, redesigned as neon mission nodes. Complete one node to unlock the next challenge.</p>
+        </section>
+
+        <section class="progress-panel">
+            <div class="progress-item">
+                <span class="progress-label">Unlocked</span>
+                <span class="progress-value" id="unlockedCount">1</span>
+            </div>
+            <div class="progress-item">
+                <span class="progress-label">Completed</span>
+                <span class="progress-value" id="completedCount">0</span>
+            </div>
+            <div class="progress-item">
+                <span class="progress-label">Best Total Score</span>
+                <span class="progress-value" id="bestTotalScore">0</span>
+            </div>
+        </section>
+
+        <section class="level-grid-shell">
+            <p class="scroll-hint">Scroll right to discover more mission nodes →</p>
+            <section class="level-grid" id="levelGrid"></section>
+        </section>
+    </main>
+
+    <script src="js/level-select.js"></script>
+</body>
+</html>

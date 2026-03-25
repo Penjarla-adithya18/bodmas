@@ -5,7 +5,8 @@
 class GameController {
     constructor() {
         this.engine = new BODMASEngine();
-        this.level = 1;
+        this.maxLevel = 15;
+        this.level = this.getInitialLevelFromUrl();
         this.score = 0;
         this.mistakes = 0;
         this.startTime = null;
@@ -34,7 +35,7 @@ class GameController {
         this.hintBtn = document.getElementById('hintBtn');
         this.quitBtn = document.getElementById('quitBtn');
         this.nextBtn = document.getElementById('nextBtn');
-        this.homeBtn = document.getElementById('homeBtn');
+        this.backBtn = document.getElementById('backBtn');
     }
 
     attachEventListeners() {
@@ -43,7 +44,16 @@ class GameController {
         this.hintBtn.addEventListener('click', () => this.showHint());
         this.quitBtn.addEventListener('click', () => this.quitGame());
         this.nextBtn.addEventListener('click', () => this.nextLevel());
-        this.homeBtn.addEventListener('click', () => window.location.href = 'index.html');
+        this.backBtn.addEventListener('click', () => window.location.href = 'level-select.html');
+    }
+
+    getInitialLevelFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const selected = parseInt(params.get('level'), 10);
+        if (Number.isFinite(selected) && selected >= 1) {
+            return Math.min(selected, 15);
+        }
+        return 1;
     }
 
     startNewGame() {
@@ -145,8 +155,16 @@ class GameController {
         const levelScore = this.engine.calculateScore(elapsedTime, this.mistakes);
         this.score += levelScore;
 
+        this.unlockNextLevel();
+
         this.showGameOverModal(levelScore, elapsedTime);
         this.saveScore(levelScore, elapsedTime);
+    }
+
+    unlockNextLevel() {
+        const currentUnlocked = parseInt(localStorage.getItem('bodmas_unlocked_level') || '1', 10);
+        const nextUnlocked = Math.min(this.maxLevel, this.level + 1);
+        localStorage.setItem('bodmas_unlocked_level', String(Math.max(currentUnlocked, nextUnlocked)));
     }
 
     showGameOverModal(levelScore, timeInSeconds) {
@@ -159,6 +177,15 @@ class GameController {
     }
 
     nextLevel() {
+        if (this.level >= this.maxLevel) {
+            this.gameOverModal.classList.remove('show');
+            this.showFeedback('You completed all available levels!', 'success');
+            setTimeout(() => {
+                window.location.href = 'level-select.html';
+            }, 1200);
+            return;
+        }
+
         this.level++;
         this.gameOverModal.classList.remove('show');
         this.levelDisplay.textContent = this.level;
@@ -217,7 +244,7 @@ class GameController {
 
     quitGame() {
         if (confirm('Quit the game?')) {
-            window.location.href = 'index.html';
+            window.location.href = 'level-select.html';
         }
     }
 

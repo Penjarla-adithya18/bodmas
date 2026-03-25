@@ -4,11 +4,10 @@
  */
 
 // Database credentials
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-// Set your MySQL password here (root requires password on this machine).
-define('DB_PASS', '5566');
-define('DB_NAME', 'bodmas');
+define('DB_HOST', 'sql305.infinityfree.com');
+define('DB_USER', 'if0_41476419');
+define('DB_PASS', '3PP6kYrIMpTGVd');
+define('DB_NAME', 'if0_41476419_db');
 
 $conn = null;
 $dbError = null;

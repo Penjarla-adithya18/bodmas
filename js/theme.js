@@ -2,6 +2,11 @@
     function applyTheme(theme) {
         var targetTheme = theme === 'light' ? 'light' : 'dark';
         document.body.setAttribute('data-theme', targetTheme);
+        if (targetTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
         try {
             localStorage.setItem('bodmas_theme', targetTheme);
         } catch (_e) {

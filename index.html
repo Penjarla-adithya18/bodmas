@@ -1,323 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BODMAS Master - Master the Math, Own the Order</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <title>BODMAS Master - Master the Math</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0e0e13',
+                        surface: '#19191f',
+                        primary: '#db90ff',
+                        'primary-dim': '#b12ef1',
+                        secondary: '#00eefc',
+                        tertiary: '#b0ff96',
+                        outline: '#76747b',
+                        'outline-variant': '#48474d',
+                        'on-surface': '#f8f5fd',
+                        'on-surface-variant': '#acaab1'
+                    },
+                    fontFamily: {
+                        headline: ['Space Grotesk', 'sans-serif'],
+                        body: ['Manrope', 'sans-serif'],
+                        label: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(37, 37, 44, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
 </head>
-<body class="home-page">
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">BODMAS Master</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#stats" class="nav-link">Stats</a></li>
-            </ul>
-            <div class="nav-auth-actions">
-                <button class="btn btn-secondary nav-auth-btn" onclick="openAuthModal('login')">Login</button>
-                <button class="btn btn-primary nav-auth-btn" onclick="handleGetStarted()">Get Started</button>
-            </div>
-            <div class="nav-icons">
-                <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span class="icon theme-icon">◐</span></button>
-            </div>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 scroll-smooth">
+    <header class="fixed top-0 z-50 flex h-20 w-full items-center justify-between border-b border-outline-variant/30 bg-background/70 px-6 backdrop-blur-xl shadow-[0_4px_20px_rgba(219,144,255,0.08)]">
+        <div class="flex items-center gap-4">
+            <span class="font-headline text-2xl font-black tracking-widest text-primary drop-shadow-[0_0_8px_rgba(219,144,255,0.4)]">BODMAS Master</span>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <p class="hero-subtitle">THE ORDER OF OPERATIONS AWAITS</p>
-            <h1 class="hero-title">Master the <span class="highlight-purple">Math.</span> <br>Own the <span class="highlight-cyan">Order.</span></h1>
-            <p class="hero-description">
-                Enter the neon laboratory where equations are weapons and logic is your shield. 
-                Solve complex BODMAS puzzles in high-fidelity cyber-environments.
-            </p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="navigateTo('game.html')">Play Now</button>
-                <button class="btn btn-secondary" onclick="navigateTo('leaderboard.html')">Explore Ranks</button>
-            </div>
+        <nav class="hidden items-center gap-8 font-headline text-sm font-bold uppercase tracking-wider md:flex">
+            <a href="#home" class="text-secondary drop-shadow-[0_0_10px_rgba(0,238,252,0.5)] transition-all">Home</a>
+            <a href="#about" class="text-on-surface-variant transition-all hover:text-secondary">About</a>
+            <a href="#stats" class="text-on-surface-variant transition-all hover:text-secondary">Stats</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <button onclick="window.location.href='login.html'" class="rounded-full border border-secondary px-5 py-2 text-xs font-headline font-bold uppercase tracking-widest text-secondary transition-all hover:bg-secondary/10">Login</button>
+            <button onclick="window.location.href='register.html'" class="rounded-full bg-gradient-to-r from-primary to-primary-dim px-5 py-2 text-xs font-headline font-bold uppercase tracking-widest text-[#3c0058] transition-all hover:scale-105">Get Started</button>
+            <button type="button" class="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-outline-variant/50 bg-surface/70 text-secondary transition-all hover:border-secondary/70" aria-label="Toggle theme" title="Toggle theme">
+                <span class="theme-icon">◐</span>
+            </button>
         </div>
-        <div class="hero-visual">
-            <div class="floating-cube">
-                <div class="cube-face symbol-mark" aria-label="BODMAS symbol">
-                    <span class="symbol-part symbol-top">0</span>
-                    <span class="symbol-part symbol-mid">=</span>
-                    <span class="symbol-part symbol-bar"></span>
-                    <span class="symbol-part symbol-bar short"></span>
-                </div>
-            </div>
-        </div>
-    </section>
+    </header>
 
-    <!-- Real-Time Stats Section -->
-    <section class="stats-section" id="stats">
-        <div class="stats-header">
-            <p class="section-label">REAL-TIME PROCESSING</p>
-            <h2 class="stats-title">
-                <span class="stats-number">1,248,392</span><span class="highlight-cyan">+</span>
-            </h2>
-            <p class="stats-subtitle">Problems Solved Today</p>
-        </div>
-        <div class="equations-display">
-            <span>(2+2)x4</span>
-            <span>10-2/2</span>
-            <span>8x(9+1)</span>
-            <span>15/3+7</span>
-            <span>10-2/2</span>
-        </div>
-    </section>
+    <main class="relative pt-24" id="home">
+        <section class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6">
+            <div class="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]"></div>
+            <div class="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-secondary/10 blur-[100px]"></div>
 
-    <!-- Features Section -->
-    <section class="features-section" id="about">
-        <h2 class="section-title">Next-Gen <span class="highlight-green">Mathematics</span></h2>
-        <p class="section-description">Experience math training built for the future. No boring worksheets, just pure tactical logic.</p>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3>Visual Solver</h3>
-                <p>Understand complex equations with rich visual representations and step-by-step guidance.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Global Ranks</h3>
-                <p>Climb the leaderboard and compete against the world's best mathematical minds.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3>Daily Puzzles</h3>
-                <p>Fresh mathematical challenges delivered every 24 hours. Keep your brain sharp.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Designed for Performance</h3>
-                <p>60 FPS ANIMATIONS | ZERO LATENCY | ADAPTIVE SCALING</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to rewrite the laws of<br><span class="highlight-purple">BODMAS?</span></h2>
-            <p>Join over 1 million architects in the most immersive mathematical training lab ever created.</p>
-            <button class="btn btn-primary btn-large" onclick="openAuthModal('login')">Start Your Training</button>
-        </div>
-    </section>
-
-    <!-- Auth Modal -->
-    <div class="auth-modal" id="authModal" aria-hidden="true">
-        <div class="auth-modal-backdrop" onclick="closeAuthModal()"></div>
-        <div class="auth-modal-content" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
-            <button class="auth-close" onclick="closeAuthModal()" aria-label="Close">&times;</button>
-            <h3 id="authModalTitle">Operator Login</h3>
-            <p class="auth-subtitle">Verify identity to continue the mission.</p>
-
-            <p id="authMessage" class="auth-message" aria-live="polite"></p>
-
-            <form id="loginForm" class="auth-form">
-                <label class="auth-label" for="loginUsername">Access Token (Email)</label>
-                <div class="auth-input-wrap">
-                    <span class="auth-input-icon">@</span>
-                    <input id="loginUsername" type="text" placeholder="operator@nexus.com" required>
+            <div class="z-10 max-w-5xl text-center">
+                <div class="mb-8 inline-block animate-pulse rounded-full border border-primary/30 bg-primary/10 px-4 py-1 font-label text-sm uppercase tracking-widest text-primary">
+                    The Order of Operations Awaits
                 </div>
 
-                <div class="auth-label-row">
-                    <label class="auth-label" for="loginPassword">Encryption Key (Password)</label>
-                    <button type="button" class="auth-link">Forgot?</button>
+                <h1 class="mb-8 font-headline text-6xl font-black leading-none tracking-tight md:text-8xl lg:text-9xl">
+                    Master the <span class="text-primary drop-shadow-[0_0_15px_rgba(219,144,255,0.35)]">Math.</span><br>
+                    Own the <span class="text-secondary drop-shadow-[0_0_15px_rgba(0,238,252,0.35)]">Order.</span>
+                </h1>
+
+                <p class="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-xl">
+                    Enter the neon laboratory where equations are weapons and logic is your shield. Solve complex BODMAS puzzles in high-fidelity cyber-environments.
+                </p>
+
+                <div class="flex flex-col items-center justify-center gap-6 sm:flex-row">
+                    <button onclick="window.location.href='login.html'" class="rounded-full bg-gradient-to-br from-primary to-primary-dim px-10 py-5 font-headline text-xl font-bold text-[#3c0058] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(219,144,255,0.45)] active:scale-95">
+                        Play Now
+                    </button>
+                    <button onclick="window.location.href='#stats'" class="glass-panel rounded-full border border-secondary/40 px-10 py-5 font-headline text-xl font-bold text-secondary transition-all hover:bg-secondary/10 hover:shadow-[0_0_20px_rgba(0,238,252,0.2)] active:scale-95">
+                        Explore Ranks
+                    </button>
                 </div>
-                <div class="auth-input-wrap">
-                    <span class="auth-input-icon">🔒</span>
-                    <input id="loginPassword" type="password" placeholder="••••••••••" required>
-                </div>
-
-                <label class="auth-keep-signed">
-                    <input type="checkbox" id="keepSignedIn">
-                    <span>Maintain Link (Keep me signed in)</span>
-                </label>
-
-                <button type="submit" class="btn btn-primary auth-submit">Enter The Arena</button>
-                <p class="auth-switch-text">New Operator? <button type="button" class="auth-switch-btn" onclick="switchAuthTab('register')">Initiate Registration</button></p>
-            </form>
-
-            <form id="registerForm" class="auth-form auth-hidden">
-                <label class="auth-label" for="registerUsername">Operator Name</label>
-                <div class="auth-input-wrap">
-                    <span class="auth-input-icon">👤</span>
-                    <input id="registerUsername" type="text" placeholder="Your codename" required>
-                </div>
-
-                <label class="auth-label" for="registerEmail">Access Token (Email)</label>
-                <div class="auth-input-wrap">
-                    <span class="auth-input-icon">@</span>
-                    <input id="registerEmail" type="email" placeholder="operator@nexus.com" required>
-                </div>
-
-                <label class="auth-label" for="registerPassword">Encryption Key (Password)</label>
-                <div class="auth-input-wrap">
-                    <span class="auth-input-icon">🔒</span>
-                    <input id="registerPassword" type="password" placeholder="Min 6 characters" minlength="6" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary auth-submit">Create Operator</button>
-                <p class="auth-switch-text">Already have an account? <button type="button" class="auth-switch-btn" onclick="switchAuthTab('login')">Login</button></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer Link Sections -->
-    <section class="info-sections">
-        <div class="info-grid">
-            <article class="info-card" id="privacy">
-                <h3>Privacy</h3>
-                <p>We use your account data only for authentication, gameplay progress, and leaderboard functionality. Passwords are stored as secure hashes.</p>
-            </article>
-            <article class="info-card" id="terms">
-                <h3>Terms</h3>
-                <p>Use this platform for fair educational gameplay. Abusive behavior, spam registrations, and score manipulation are prohibited.</p>
-            </article>
-            <article class="info-card" id="api">
-                <h3>API</h3>
-                <p>Available endpoints include registration, login, score submission, and leaderboard retrieval using JSON requests and responses.</p>
-            </article>
-            <article class="info-card" id="support">
-                <h3>Support</h3>
-                <p>For setup help, verify your PHP server, MySQL service, and database credentials, then retry from the login/register interface.</p>
-            </article>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p><span class="highlight-purple">BODMAS Master</span></p>
-            <div class="footer-links">
-                <a href="#privacy">PRIVACY</a>
-                <a href="#terms">TERMS</a>
-                <a href="#api">API</a>
-                <a href="#support">SUPPORT</a>
             </div>
-            <p class="footer-copyright">&copy; 2024 BODMAS Master. All rights reserved.</p>
+
+            <div class="relative mt-16 flex aspect-square w-full max-w-lg items-center justify-center">
+                <div class="animate-float">
+                    <div class="relative h-64 w-64 overflow-hidden rounded-[3rem] border border-primary/30 shadow-[0_0_60px_rgba(219,144,255,0.2)] md:h-80 md:w-80">
+                        <img class="h-full w-full object-cover" alt="3D Floating Math Character" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxUAOyhYV0z-vkr_IhIDIiC_I7PFS3mCpJ8zQfLvbCShtlFuHvouhNwwtGrj4ihSkcLWzjQJkXZnHy0lSLA1Iq0kqqadDncKgmkn4HD9l6JCRz2RoRnrOT6JGHXKs2NulSPTGG7ow-ddC3SgBYy9tpxw_CA167kHVWreBiVWfzk28tnn-M2KamSIkbN9sJ9o__aRkRbKrp8KtjBD1SCWUL236HA7o7fpGJA45B6sVtOtbUp3W9geq8KTASYLcrwD3hb21xx5I2Xsk">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+                    </div>
+                </div>
+
+                <div class="glass-panel absolute -right-10 -top-10 flex h-24 w-24 animate-float items-center justify-center rounded-2xl border border-tertiary/30" style="animation-delay:-1s">
+                    <span class="font-headline text-4xl font-black text-tertiary">÷</span>
+                </div>
+                <div class="glass-panel absolute -left-12 bottom-0 flex h-20 w-20 animate-float items-center justify-center rounded-full border border-primary/30" style="animation-delay:-2s">
+                    <span class="font-headline text-3xl font-black text-primary">×</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="px-6 py-24">
+            <div class="glass-panel mx-auto max-w-7xl overflow-hidden rounded-3xl border border-outline-variant/20 p-12 text-center">
+                <div class="mb-6 font-label uppercase tracking-[0.3em] text-on-surface-variant">Real-Time Processing</div>
+                <div class="mb-4 font-headline text-7xl font-black tracking-tight text-secondary drop-shadow-[0_0_20px_rgba(0,238,252,0.4)] md:text-9xl">1,248,392+</div>
+                <p class="text-2xl font-light text-on-surface">Problems Solved Today</p>
+                <div class="mt-10 flex flex-wrap justify-center gap-3 opacity-30">
+                    <span class="font-headline text-3xl font-black">(2+2)x4</span>
+                    <span class="font-headline text-3xl font-black">10-2/2</span>
+                    <span class="font-headline text-3xl font-black">8x(9+1)</span>
+                    <span class="font-headline text-3xl font-black">15/3+7</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="mx-auto max-w-7xl px-6 py-24">
+            <div class="mb-16">
+                <h2 class="mb-4 font-headline text-4xl font-black tracking-tight md:text-6xl">Next-Gen <span class="text-tertiary">Mathematics</span></h2>
+                <p class="max-w-xl text-lg text-on-surface-variant">Experience math training built for the future. No boring worksheets, just pure tactical logic.</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <article class="group relative overflow-hidden rounded-3xl border border-outline-variant/20 bg-surface p-8 transition-all hover:border-primary/40 md:col-span-2">
+                    <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-primary/40 bg-primary/20">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                    </div>
+                    <h3 class="mb-2 font-headline text-3xl font-bold">Visual Solver</h3>
+                    <p class="max-w-xl text-on-surface-variant">Deconstruct complex equations with an immersive kinetic interface that makes order-of-operations feel tactical.</p>
+                </article>
+
+                <article class="group relative overflow-hidden rounded-3xl border border-outline-variant/20 bg-surface p-8 transition-all hover:border-secondary/40">
+                    <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-secondary/40 bg-secondary/20">
+                        <span class="material-symbols-outlined text-secondary">leaderboard</span>
+                    </div>
+                    <h3 class="mb-2 font-headline text-3xl font-bold">Global Ranks</h3>
+                    <p class="text-on-surface-variant">Compete against top players and climb the leaderboard with speed and precision.</p>
+                </article>
+
+                <article class="group relative overflow-hidden rounded-3xl border border-outline-variant/20 bg-surface p-8 transition-all hover:border-tertiary/40">
+                    <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-tertiary/40 bg-tertiary/20">
+                        <span class="material-symbols-outlined text-tertiary">extension</span>
+                    </div>
+                    <h3 class="mb-2 font-headline text-3xl font-bold">Daily Puzzles</h3>
+                    <p class="text-on-surface-variant">Fresh challenges every day to keep your logic sharp and your streak alive.</p>
+                </article>
+
+                <article class="relative flex items-center justify-center overflow-hidden rounded-3xl border border-outline-variant/20 bg-surface p-10 md:col-span-2">
+                    <div class="text-center">
+                        <h3 class="mb-5 font-headline text-4xl font-black">Designed for <span class="text-primary">Performance.</span></h3>
+                        <div class="flex flex-wrap justify-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface-variant">
+                            <span class="rounded-full border border-outline-variant/30 bg-background px-3 py-1">60 FPS Animations</span>
+                            <span class="rounded-full border border-outline-variant/30 bg-background px-3 py-1">Zero Latency Logic</span>
+                            <span class="rounded-full border border-outline-variant/30 bg-background px-3 py-1">Adaptive Scaling</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="px-6 py-28">
+            <div class="glass-panel relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-primary/30 p-12 text-center md:p-16">
+                <div class="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-[80px]"></div>
+                <div class="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-secondary/10 blur-[80px]"></div>
+                <h2 class="mb-6 font-headline text-4xl font-black tracking-tight md:text-5xl">Ready to rewrite the laws of <span class="text-primary">BODMAS?</span></h2>
+                <p class="mx-auto mb-10 max-w-2xl text-xl text-on-surface-variant">Join over 1 million architects in the most immersive mathematical training sim ever created.</p>
+                <button onclick="window.location.href='login.html'" class="rounded-full bg-on-surface px-12 py-5 font-headline text-xl font-black text-background transition-all hover:scale-105 hover:bg-primary active:scale-95">Start Your Training</button>
+            </div>
+        </section>
+
+        <section class="px-6 pb-10">
+            <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-4">
+                <article id="privacy" class="rounded-2xl border border-outline-variant/20 bg-surface p-4 text-sm text-on-surface-variant">Privacy: account data is used for auth, progress, and leaderboard only.</article>
+                <article id="terms" class="rounded-2xl border border-outline-variant/20 bg-surface p-4 text-sm text-on-surface-variant">Terms: fair gameplay only. Abuse and score manipulation are prohibited.</article>
+                <article id="api" class="rounded-2xl border border-outline-variant/20 bg-surface p-4 text-sm text-on-surface-variant">API: registration, login, score save, and leaderboard endpoints via JSON.</article>
+                <article id="support" class="rounded-2xl border border-outline-variant/20 bg-surface p-4 text-sm text-on-surface-variant">Support: verify PHP server, MySQL service, and DB credentials if auth fails.</article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-outline-variant/20 bg-surface px-6 py-10">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
+            <div class="font-headline text-xl font-black tracking-widest text-primary">BODMAS Master</div>
+            <div class="flex gap-6 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+                <a href="#privacy" class="transition-colors hover:text-primary">Privacy</a>
+                <a href="#terms" class="transition-colors hover:text-primary">Terms</a>
+                <a href="#api" class="transition-colors hover:text-primary">API</a>
+                <a href="#support" class="transition-colors hover:text-primary">Support</a>
+            </div>
+            <div class="font-label text-[10px] uppercase opacity-60">© 2024 BODMAS Master. All rights reserved.</div>
         </div>
     </footer>
 
-    <script src="js/api.js"></script>
     <script src="js/theme.js"></script>
-    <script>
-        function navigateTo(page) {
-            window.location.href = page;
-        }
-
-        function openAuthModal(tab = 'login') {
-            const modal = document.getElementById('authModal');
-            modal.classList.add('show');
-            modal.setAttribute('aria-hidden', 'false');
-            switchAuthTab(tab);
-        }
-
-        function closeAuthModal() {
-            const modal = document.getElementById('authModal');
-            modal.classList.remove('show');
-            modal.setAttribute('aria-hidden', 'true');
-            setAuthMessage('');
-        }
-
-        function switchAuthTab(tab) {
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            const authTitle = document.getElementById('authModalTitle');
-            const authSubtitle = document.querySelector('.auth-subtitle');
-
-            if (tab === 'login') {
-                loginForm.classList.remove('auth-hidden');
-                registerForm.classList.add('auth-hidden');
-                authTitle.textContent = 'Operator Login';
-                authSubtitle.textContent = 'Verify identity to continue the mission.';
-            } else {
-                registerForm.classList.remove('auth-hidden');
-                loginForm.classList.add('auth-hidden');
-                authTitle.textContent = 'Operator Register';
-                authSubtitle.textContent = 'Create credentials and enter the arena.';
-            }
-
-            setAuthMessage('');
-        }
-
-        function setAuthMessage(message, type = '') {
-            const el = document.getElementById('authMessage');
-            el.textContent = message;
-            el.className = 'auth-message';
-            if (type) {
-                el.classList.add(type);
-            }
-        }
-
-        function handleGetStarted() {
-            const savedUser = localStorage.getItem('bodmas_user');
-            if (savedUser) {
-                navigateTo('dashboard.html');
-                return;
-            }
-            openAuthModal('register');
-        }
-
-        async function handleLoginSubmit(event) {
-            event.preventDefault();
-            const username = document.getElementById('loginUsername').value.trim();
-            const password = document.getElementById('loginPassword').value;
-
-            try {
-                setAuthMessage('Logging in...', 'info');
-                const response = await API.auth.login(username, password);
-                if (!response.success) {
-                    throw new Error(response.error || 'Login failed');
-                }
-
-                localStorage.setItem('bodmas_user', JSON.stringify(response.user));
-                setAuthMessage('Login successful. Opening dashboard...', 'success');
-                setTimeout(() => navigateTo('dashboard.html'), 400);
-            } catch (error) {
-                setAuthMessage(error.message || 'Login failed', 'error');
-            }
-        }
-
-        async function handleRegisterSubmit(event) {
-            event.preventDefault();
-            const username = document.getElementById('registerUsername').value.trim();
-            const email = document.getElementById('registerEmail').value.trim();
-            const password = document.getElementById('registerPassword').value;
-
-            try {
-                setAuthMessage('Creating account...', 'info');
-                const response = await API.auth.register(username, password, email);
-                if (!response.success) {
-                    throw new Error(response.error || 'Registration failed');
-                }
-
-                localStorage.setItem('bodmas_user', JSON.stringify(response.user));
-                setAuthMessage('Account created. Opening dashboard...', 'success');
-                setTimeout(() => navigateTo('dashboard.html'), 400);
-            } catch (error) {
-                setAuthMessage(error.message || 'Registration failed', 'error');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('loginForm').addEventListener('submit', handleLoginSubmit);
-            document.getElementById('registerForm').addEventListener('submit', handleRegisterSubmit);
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    closeAuthModal();
-                }
-            });
-        });
-    </script>
 </body>
 </html>

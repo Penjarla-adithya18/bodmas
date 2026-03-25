@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>BODMAS Master - Initiate Registration</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: '#0e0e13',
+                        primary: '#db90ff',
+                        secondary: '#00eefc',
+                        tertiary: '#b0ff96',
+                        outline: '#76747b',
+                        'outline-variant': '#48474d',
+                        'surface-container-lowest': '#000000',
+                        'surface-container-high': '#1f1f26',
+                        'on-surface': '#f8f5fd',
+                        'on-surface-variant': '#acaab1',
+                        'on-primary': '#4d0070',
+                        'primary-dim': '#b12ef1'
+                    },
+                    fontFamily: {
+                        headline: ['Space Grotesk', 'sans-serif'],
+                        body: ['Manrope', 'sans-serif'],
+                        label: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(37, 37, 44, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(219, 144, 255, 0.15);
+        }
+
+        .neon-glow-secondary {
+            box-shadow: 0 0 15px rgba(0, 238, 252, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float 8s ease-in-out infinite 2s;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-x-hidden">
+    <button type="button" class="theme-toggle fixed top-5 right-5 z-30 rounded-full border border-outline-variant/40 bg-surface-container-high/70 px-3 py-2 text-xs tracking-wider uppercase text-on-surface-variant hover:text-secondary hover:border-secondary/50 transition" aria-label="Toggle theme" title="Toggle theme"><span class="theme-icon">◐</span></button>
+
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[150px] rounded-full"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#f8f5fd 1px, transparent 1px), linear-gradient(90deg, #f8f5fd 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <main class="relative z-10 min-h-screen flex flex-col md:flex-row items-center justify-center p-4 md:p-12 gap-12 lg:gap-24">
+        <section class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+            <div class="relative">
+                <div class="absolute -top-12 -left-12 text-secondary/40 animate-float">
+                    <span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'wght' 200;">add</span>
+                </div>
+                <div class="absolute top-24 -right-16 text-primary/40 animate-float-delayed">
+                    <span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'wght' 200;">close</span>
+                </div>
+                <div class="absolute -bottom-16 left-24 text-tertiary/40 animate-float">
+                    <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 200;">percent</span>
+                </div>
+
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-dim flex items-center justify-center shadow-[0_0_30px_rgba(219,144,255,0.4)]">
+                        <span class="material-symbols-outlined text-on-primary text-3xl font-bold">functions</span>
+                    </div>
+                    <h1 class="font-headline font-black tracking-tighter text-4xl md:text-6xl bg-gradient-to-br from-primary via-[#d37bff] to-secondary bg-clip-text text-transparent">BODMAS Master</h1>
+                </div>
+
+                <p class="font-headline text-xl md:text-2xl text-on-surface-variant max-w-md leading-relaxed">
+                    Weaponize your <span class="text-secondary font-bold">Logic</span>.
+                    Master the <span class="text-tertiary font-bold">Sequence</span>.
+                    Rule the <span class="text-primary font-bold">Arena</span>.
+                </p>
+            </div>
+
+            <div class="hidden md:block w-full max-w-sm aspect-square relative rounded-xl overflow-hidden glass-panel border border-white/5 neon-glow-primary">
+                <img class="w-full h-full object-cover opacity-60 mix-blend-screen" alt="Futuristic neon laboratory visuals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsSUnglSWXUuo4Rcwl8AVRNEOFnwkxuIMJEEP9JaRIi3Y4igPcp4AR2X4aMMSm_JVhiRNIy8XKx3j_tCr8GzEE8ovv99JCnp15BaPoY1DCZK81gFhJWJ-8e4H9Y9xCpbFt-zS5YEF-VV7tgUC2oz_nHCqp-YoE3dJkMLJok1QRNv9Ydd_h6_fSZU5hvie-1k2HjPYI9kj35C2CC7eX9g2EtayMvY1VUxR8c7HKUy1-Jahf2oUtSIPDd3MX_Bo9aoaYjw-kGfqoc7k">
+                <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <div class="flex items-center gap-2 text-[10px] font-label uppercase tracking-widest text-secondary mb-1">
+                        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        System Online
+                    </div>
+                    <div class="text-sm font-headline text-on-surface/80">NEURAL_NET: MATH_CORE_V4.0</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full md:w-[480px] relative">
+            <div class="glass-panel p-8 md:p-10 rounded-xl border border-white/5 neon-glow-secondary relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/50 to-transparent"></div>
+
+                <div class="mb-10 text-center md:text-left">
+                    <h2 class="font-headline text-3xl font-bold text-on-surface mb-2">OPERATOR REGISTER</h2>
+                    <p class="text-on-surface-variant font-medium">Create credentials and enter the arena.</p>
+                </div>
+
+                <p id="authMessage" class="hidden mb-6 rounded-xl border border-outline-variant/30 bg-surface-container-lowest/70 px-4 py-3 text-sm"></p>
+
+                <form id="registerForm" class="space-y-6">
+                    <div class="space-y-2">
+                        <label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block ml-1" for="registerUsername">Operator Name</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors duration-300">person</span>
+                            <input id="registerUsername" class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border-2 border-outline-variant/30 rounded-lg text-on-surface focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-all duration-300 placeholder:text-outline/50 font-body" placeholder="Your codename" type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block ml-1" for="registerEmail">Access Token (Email)</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors duration-300">alternate_email</span>
+                            <input id="registerEmail" class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border-2 border-outline-variant/30 rounded-lg text-on-surface focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-all duration-300 placeholder:text-outline/50 font-body" placeholder="operator@nexus.com" type="email" required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block ml-1" for="registerPassword">Encryption Key (Password)</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors duration-300">lock</span>
+                            <input id="registerPassword" class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border-2 border-outline-variant/30 rounded-lg text-on-surface focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-all duration-300 placeholder:text-outline/50 font-body" placeholder="Minimum 6 characters" minlength="6" type="password" required>
+                        </div>
+                    </div>
+
+                    <button class="w-full py-5 bg-gradient-to-r from-primary to-primary-dim text-on-primary font-headline font-black text-lg rounded-full shadow-[0_0_30px_rgba(219,144,255,0.3)] hover:shadow-[0_0_45px_rgba(219,144,255,0.5)] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3" type="submit">
+                        CREATE OPERATOR
+                        <span class="material-symbols-outlined font-bold">rocket_launch</span>
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center">
+                    <p class="text-on-surface-variant text-sm">
+                        Already have an account?
+                        <a class="text-secondary font-bold hover:underline decoration-secondary/30 underline-offset-4 ml-1" href="login.html">Login</a>
+                    </p>
+                    <a class="mt-4 inline-block text-xs uppercase tracking-[0.2em] text-outline hover:text-secondary transition" href="index.html">Back to Home</a>
+                </div>
+            </div>
+
+            <div class="absolute -bottom-6 -right-6 px-4 py-2 glass-panel border border-tertiary/20 rounded-lg text-tertiary font-label text-[10px] tracking-widest hidden lg:flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_#b0ff96]"></span>
+                ENCRYPTION: AES-256-BIT
+            </div>
+        </section>
+    </main>
+
+    <footer class="fixed bottom-6 left-6 right-6 flex flex-col md:flex-row justify-between items-center text-[10px] font-label uppercase tracking-[0.3em] text-outline/40 pointer-events-none">
+        <div class="mb-2 md:mb-0">© 2024 BODMAS MASTER // QUANTUM EDU-SYSTEMS</div>
+        <div class="flex gap-6">
+            <span>Protocol: HTTPS_SECURE</span>
+            <span>Latency: 12ms</span>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        function setAuthMessage(message, type) {
+            const el = document.getElementById('authMessage');
+            el.textContent = message;
+            el.classList.remove('hidden', 'text-red-300', 'text-cyan-300', 'text-emerald-300', 'border-red-400/30', 'border-cyan-400/30', 'border-emerald-400/30');
+
+            if (type === 'error') {
+                el.classList.add('text-red-300', 'border-red-400/30');
+            } else if (type === 'success') {
+                el.classList.add('text-emerald-300', 'border-emerald-400/30');
+            } else {
+                el.classList.add('text-cyan-300', 'border-cyan-400/30');
+            }
+        }
+
+        async function handleRegisterSubmit(event) {
+            event.preventDefault();
+            const username = document.getElementById('registerUsername').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+
+            try {
+                setAuthMessage('Creating account...', 'info');
+                const response = await API.auth.register(username, password, email);
+                if (!response.success) {
+                    throw new Error(response.error || 'Registration failed');
+                }
+
+                localStorage.setItem('bodmas_user', JSON.stringify(response.user));
+                setAuthMessage('Account created. Opening dashboard...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 350);
+            } catch (error) {
+                setAuthMessage(error.message || 'Registration failed', 'error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('registerForm').addEventListener('submit', handleRegisterSubmit);
+        });
+    </script>
+</body>
+</html>

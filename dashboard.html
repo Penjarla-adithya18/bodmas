@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODMAS Master Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">BODMAS Master</span>
+            </div>
+            <div class="nav-auth-actions">
+                <button class="btn btn-secondary nav-auth-btn" onclick="goToHome()">Home</button>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span class="icon theme-icon">◐</span></button>
+                <button class="btn btn-secondary nav-auth-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <section class="dashboard-card">
+            <p class="hero-subtitle">WELCOME BACK</p>
+            <h1 class="hero-title dashboard-title">Your <span class="highlight-cyan">Dashboard</span></h1>
+            <p class="hero-description" id="welcomeText">Loading your profile...</p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="startGame()">Start Game</button>
+                <button class="btn btn-secondary" onclick="openLeaderboard()">Leaderboard</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        function startGame() {
+            window.location.href = 'game.html';
+        }
+
+        function openLeaderboard() {
+            window.location.href = 'leaderboard.html';
+        }
+
+        async function logout() {
+            try {
+                await API.auth.logout();
+            } catch (e) {
+                // Ignore logout API errors and clear local session anyway.
+            }
+            localStorage.removeItem('bodmas_user');
+            window.location.href = 'index.html';
+        }
+
+        function initDashboard() {
+            const rawUser = localStorage.getItem('bodmas_user');
+            if (!rawUser) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                const user = JSON.parse(rawUser);
+                const name = user.username || 'Player';
+                const email = user.email || 'No email';
+                document.getElementById('welcomeText').textContent = `Signed in as ${name} (${email}). Choose an action to continue.`;
+            } catch (e) {
+                localStorage.removeItem('bodmas_user');
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>

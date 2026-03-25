@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODMAS Master - Leaderboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><span class="logo-text">BODMAS Master</span></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="game.html" class="nav-link">Play</a></li>
+                <li><a href="leaderboard.html" class="nav-link active">Rankings</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span class="icon theme-icon">◐</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="leaderboard-container">
+        <section class="leaderboard-header">
+            <h1>Global Rankings</h1>
+            <p>compete against mathematicians worldwide</p>
+        </section>
+
+        <!-- Filter Controls -->
+        <div class="leaderboard-filters">
+            <button class="filter-btn active" data-filter="all">All Time</button>
+            <button class="filter-btn" data-filter="week">This Week</button>
+            <button class="filter-btn" data-filter="day">Today</button>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-wrapper">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                        <th>Level</th>
+                        <th>Accuracy</th>
+                        <th>Best Time</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Your Stats (if logged in) -->
+        <section class="your-stats">
+            <h2>Your Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-name">Total Score</span>
+                    <span class="stat-number" id="totalScore">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-name">Highest Level</span>
+                    <span class="stat-number" id="highestLevel">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-name">Games Played</span>
+                    <span class="stat-number" id="gamesPlayed">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-name">Avg Accuracy</span>
+                    <span class="stat-number" id="avgAccuracy">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <div class="leaderboard-actions">
+            <a href="game.html" class="btn btn-primary">Play Now</a>
+            <a href="index.html" class="btn btn-secondary">Home</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p><span class="highlight-purple">BODMAS Master</span></p>
+            <p class="footer-copyright">&copy; 2024 BODMAS Master. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>

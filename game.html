@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODMAS Master - Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="game-page">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><span class="logo-text">BODMAS Master</span></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="game.html" class="nav-link active">Play</a></li>
+                <li><a href="leaderboard.html" class="nav-link">Rankings</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn" id="statsBtn"><span class="icon">📊</span></button>
+                <button class="icon-btn" id="profileBtn"><span class="icon">👤</span></button>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span class="icon theme-icon">◐</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <main class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">LEVEL</span>
+                    <span class="stat-value" id="levelDisplay">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SCORE</span>
+                    <span class="stat-value" id="scoreDisplay">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">TIME</span>
+                    <span class="stat-value" id="timerDisplay">00:00</span>
+                </div>
+            </div>
+            <div class="game-controls">
+                <button class="btn btn-secondary" id="hintBtn">💡 Hint</button>
+                <button class="btn btn-secondary" id="quitBtn">Quit</button>
+            </div>
+        </div>
+
+        <!-- Game Board -->
+        <div class="game-board">
+            <!-- Expression Display -->
+            <div class="expression-container">
+                <div class="expression-label">SOLVE THIS:</div>
+                <div class="expression" id="expression"></div>
+            </div>
+
+            <!-- Tiles Container -->
+            <div class="tiles-container" id="tilesContainer"></div>
+
+            <!-- Action Buttons -->
+            <div class="game-actions">
+                <button class="btn btn-primary" id="submitBtn">Submit Solution</button>
+                <button class="btn btn-secondary" id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <!-- Feedback Panel -->
+        <div class="feedback-panel" id="feedbackPanel">
+            <p id="feedbackText"></p>
+        </div>
+
+        <!-- Hint Panel -->
+        <div class="hint-panel" id="hintPanel">
+            <h3>Hint</h3>
+            <p id="hintText"></p>
+            <button class="btn btn-secondary btn-small" onclick="closeHint()">Got it</button>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div class="modal" id="gameOverModal">
+            <div class="modal-content">
+                <h2 id="gameOverTitle">Level Complete!</h2>
+                <div class="game-over-stats">
+                    <div class="final-stat">
+                        <span class="label">Score</span>
+                        <span class="value" id="finalScore">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="label">Time</span>
+                        <span class="value" id="finalTime">0s</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="label">Mistakes</span>
+                        <span class="value" id="finalMistakes">0</span>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" id="nextBtn">Next Level</button>
+                    <button class="btn btn-secondary" id="homeBtn">Home</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/bodmasEngine.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODMAS Master - Master the Math, Own the Order</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="home-page">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">BODMAS Master</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#stats" class="nav-link">Stats</a></li>
+            </ul>
+            <div class="nav-auth-actions">
+                <button class="btn btn-secondary nav-auth-btn" onclick="openAuthModal('login')">Login</button>
+                <button class="btn btn-primary nav-auth-btn" onclick="handleGetStarted()">Get Started</button>
+            </div>
+            <div class="nav-icons">
+                <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span class="icon theme-icon">◐</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">THE ORDER OF OPERATIONS AWAITS</p>
+            <h1 class="hero-title">Master the <span class="highlight-purple">Math.</span> <br>Own the <span class="highlight-cyan">Order.</span></h1>
+            <p class="hero-description">
+                Enter the neon laboratory where equations are weapons and logic is your shield. 
+                Solve complex BODMAS puzzles in high-fidelity cyber-environments.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="navigateTo('game.html')">Play Now</button>
+                <button class="btn btn-secondary" onclick="navigateTo('leaderboard.html')">Explore Ranks</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-cube">
+                <div class="cube-face symbol-mark" aria-label="BODMAS symbol">
+                    <span class="symbol-part symbol-top">0</span>
+                    <span class="symbol-part symbol-mid">=</span>
+                    <span class="symbol-part symbol-bar"></span>
+                    <span class="symbol-part symbol-bar short"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-Time Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="stats-header">
+            <p class="section-label">REAL-TIME PROCESSING</p>
+            <h2 class="stats-title">
+                <span class="stats-number">1,248,392</span><span class="highlight-cyan">+</span>
+            </h2>
+            <p class="stats-subtitle">Problems Solved Today</p>
+        </div>
+        <div class="equations-display">
+            <span>(2+2)x4</span>
+            <span>10-2/2</span>
+            <span>8x(9+1)</span>
+            <span>15/3+7</span>
+            <span>10-2/2</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="about">
+        <h2 class="section-title">Next-Gen <span class="highlight-green">Mathematics</span></h2>
+        <p class="section-description">Experience math training built for the future. No boring worksheets, just pure tactical logic.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Visual Solver</h3>
+                <p>Understand complex equations with rich visual representations and step-by-step guidance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Ranks</h3>
+                <p>Climb the leaderboard and compete against the world's best mathematical minds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Daily Puzzles</h3>
+                <p>Fresh mathematical challenges delivered every 24 hours. Keep your brain sharp.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Designed for Performance</h3>
+                <p>60 FPS ANIMATIONS | ZERO LATENCY | ADAPTIVE SCALING</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to rewrite the laws of<br><span class="highlight-purple">BODMAS?</span></h2>
+            <p>Join over 1 million architects in the most immersive mathematical training lab ever created.</p>
+            <button class="btn btn-primary btn-large" onclick="openAuthModal('login')">Start Your Training</button>
+        </div>
+    </section>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal" aria-hidden="true">
+        <div class="auth-modal-backdrop" onclick="closeAuthModal()"></div>
+        <div class="auth-modal-content" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+            <button class="auth-close" onclick="closeAuthModal()" aria-label="Close">&times;</button>
+            <h3 id="authModalTitle">Operator Login</h3>
+            <p class="auth-subtitle">Verify identity to continue the mission.</p>
+
+            <p id="authMessage" class="auth-message" aria-live="polite"></p>
+
+            <form id="loginForm" class="auth-form">
+                <label class="auth-label" for="loginUsername">Access Token (Email)</label>
+                <div class="auth-input-wrap">
+                    <span class="auth-input-icon">@</span>
+                    <input id="loginUsername" type="text" placeholder="operator@nexus.com" required>
+                </div>
+
+                <div class="auth-label-row">
+                    <label class="auth-label" for="loginPassword">Encryption Key (Password)</label>
+                    <button type="button" class="auth-link">Forgot?</button>
+                </div>
+                <div class="auth-input-wrap">
+                    <span class="auth-input-icon">🔒</span>
+                    <input id="loginPassword" type="password" placeholder="••••••••••" required>
+                </div>
+
+                <label class="auth-keep-signed">
+                    <input type="checkbox" id="keepSignedIn">
+                    <span>Maintain Link (Keep me signed in)</span>
+                </label>
+
+                <button type="submit" class="btn btn-primary auth-submit">Enter The Arena</button>
+                <p class="auth-switch-text">New Operator? <button type="button" class="auth-switch-btn" onclick="switchAuthTab('register')">Initiate Registration</button></p>
+            </form>
+
+            <form id="registerForm" class="auth-form auth-hidden">
+                <label class="auth-label" for="registerUsername">Operator Name</label>
+                <div class="auth-input-wrap">
+                    <span class="auth-input-icon">👤</span>
+                    <input id="registerUsername" type="text" placeholder="Your codename" required>
+                </div>
+
+                <label class="auth-label" for="registerEmail">Access Token (Email)</label>
+                <div class="auth-input-wrap">
+                    <span class="auth-input-icon">@</span>
+                    <input id="registerEmail" type="email" placeholder="operator@nexus.com" required>
+                </div>
+
+                <label class="auth-label" for="registerPassword">Encryption Key (Password)</label>
+                <div class="auth-input-wrap">
+                    <span class="auth-input-icon">🔒</span>
+                    <input id="registerPassword" type="password" placeholder="Min 6 characters" minlength="6" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary auth-submit">Create Operator</button>
+                <p class="auth-switch-text">Already have an account? <button type="button" class="auth-switch-btn" onclick="switchAuthTab('login')">Login</button></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Link Sections -->
+    <section class="info-sections">
+        <div class="info-grid">
+            <article class="info-card" id="privacy">
+                <h3>Privacy</h3>
+                <p>We use your account data only for authentication, gameplay progress, and leaderboard functionality. Passwords are stored as secure hashes.</p>
+            </article>
+            <article class="info-card" id="terms">
+                <h3>Terms</h3>
+                <p>Use this platform for fair educational gameplay. Abusive behavior, spam registrations, and score manipulation are prohibited.</p>
+            </article>
+            <article class="info-card" id="api">
+                <h3>API</h3>
+                <p>Available endpoints include registration, login, score submission, and leaderboard retrieval using JSON requests and responses.</p>
+            </article>
+            <article class="info-card" id="support">
+                <h3>Support</h3>
+                <p>For setup help, verify your PHP server, MySQL service, and database credentials, then retry from the login/register interface.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><span class="highlight-purple">BODMAS Master</span></p>
+            <div class="footer-links">
+                <a href="#privacy">PRIVACY</a>
+                <a href="#terms">TERMS</a>
+                <a href="#api">API</a>
+                <a href="#support">SUPPORT</a>
+            </div>
+            <p class="footer-copyright">&copy; 2024 BODMAS Master. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        function openAuthModal(tab = 'login') {
+            const modal = document.getElementById('authModal');
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+            switchAuthTab(tab);
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            setAuthMessage('');
+        }
+
+        function switchAuthTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const authTitle = document.getElementById('authModalTitle');
+            const authSubtitle = document.querySelector('.auth-subtitle');
+
+            if (tab === 'login') {
+                loginForm.classList.remove('auth-hidden');
+                registerForm.classList.add('auth-hidden');
+                authTitle.textContent = 'Operator Login';
+                authSubtitle.textContent = 'Verify identity to continue the mission.';
+            } else {
+                registerForm.classList.remove('auth-hidden');
+                loginForm.classList.add('auth-hidden');
+                authTitle.textContent = 'Operator Register';
+                authSubtitle.textContent = 'Create credentials and enter the arena.';
+            }
+
+            setAuthMessage('');
+        }
+
+        function setAuthMessage(message, type = '') {
+            const el = document.getElementById('authMessage');
+            el.textContent = message;
+            el.className = 'auth-message';
+            if (type) {
+                el.classList.add(type);
+            }
+        }
+
+        function handleGetStarted() {
+            const savedUser = localStorage.getItem('bodmas_user');
+            if (savedUser) {
+                navigateTo('dashboard.html');
+                return;
+            }
+            openAuthModal('register');
+        }
+
+        async function handleLoginSubmit(event) {
+            event.preventDefault();
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                setAuthMessage('Logging in...', 'info');
+                const response = await API.auth.login(username, password);
+                if (!response.success) {
+                    throw new Error(response.error || 'Login failed');
+                }
+
+                localStorage.setItem('bodmas_user', JSON.stringify(response.user));
+                setAuthMessage('Login successful. Opening dashboard...', 'success');
+                setTimeout(() => navigateTo('dashboard.html'), 400);
+            } catch (error) {
+                setAuthMessage(error.message || 'Login failed', 'error');
+            }
+        }
+
+        async function handleRegisterSubmit(event) {
+            event.preventDefault();
+            const username = document.getElementById('registerUsername').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+
+            try {
+                setAuthMessage('Creating account...', 'info');
+                const response = await API.auth.register(username, password, email);
+                if (!response.success) {
+                    throw new Error(response.error || 'Registration failed');
+                }
+
+                localStorage.setItem('bodmas_user', JSON.stringify(response.user));
+                setAuthMessage('Account created. Opening dashboard...', 'success');
+                setTimeout(() => navigateTo('dashboard.html'), 400);
+            } catch (error) {
+                setAuthMessage(error.message || 'Registration failed', 'error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loginForm').addEventListener('submit', handleLoginSubmit);
+            document.getElementById('registerForm').addEventListener('submit', handleRegisterSubmit);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeAuthModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

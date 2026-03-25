@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "username": "u1774465552",
+        "email": "u1774465552@example.com",
+        "password": "$2y$12$qKOK5XHtkR2NlzTUtO21S.vT4fl.c4YX6Prxj01INOA7VSMDLts6q",
+        "created_at": "2026-03-25T13:35:53+00:00"
+    },
+    {
+        "id": 2,
+        "username": "Adithya",
+        "email": "p.n.a.s.sresty@gmail.com",
+        "password": "$2y$12$UvnvogRmTsAeSEtTl8NWAe.Y1GDdUAkMbKUeIlB37vulPzcPOgZDi",
+        "created_at": "2026-03-25T13:37:00+00:00"
+    }
+]
